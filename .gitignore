@@ -1,0 +1,43 @@
+# Environments
+.venv*
+.env*
+env*
+venv*
+
+# VSCode
+.vscode
+
+# IntelliJ IDEA
+.idea
+
+# Node JS
+node_modules
+*/node_modules
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# jupyter
+.ipynb_checkpoints
+
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+
+# Distribution  packagingbuild/
+build
+dist
+pip-wheel-metadata/
+*.egg-info/
