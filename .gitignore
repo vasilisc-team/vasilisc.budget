@@ -41,3 +41,6 @@ build
 dist
 pip-wheel-metadata/
 *.egg-info/
+
+# Certificates
+/certs
