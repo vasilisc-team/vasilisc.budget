@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dash_app import example
 from home.views import home_view
+import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('', include('django_plotly_dash.urls')),
     path('main/', home_view),
     path('', home_view)
 ]
