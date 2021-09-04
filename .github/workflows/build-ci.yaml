@@ -39,6 +39,11 @@ jobs:
       - name: Test requirements
         run: |
           python3 ./budget/manage.py test --failfast
+      - name: Test notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
 
   build:
     # needs:
@@ -64,3 +69,8 @@ jobs:
             echo -e "IMAGE: $IMAGE\tIMAGE_ID: $IMAGE_ID"
           done
           docker images
+      - name: Test notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_TO }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
