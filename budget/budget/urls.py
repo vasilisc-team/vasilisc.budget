@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from dash_app import example
 from home.views import home_view
-import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
