@@ -3,3 +3,4 @@ Django==3.2.7
 django-sslserver==0.22
 pytz==2021.1
 sqlparse==0.4.1
+django_plotly_dash==1.6.5
