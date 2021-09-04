@@ -28,7 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "vasilisc.ru",
-    "8a770890bca3.sn.mynetname.net"
+    "8a770890bca3.sn.mynetname.net",
+    '127.0.0.1'
 ]
 
 # Application definition
