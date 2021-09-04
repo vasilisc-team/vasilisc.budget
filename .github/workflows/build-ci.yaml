@@ -38,11 +38,19 @@ jobs:
           pip install -r budget/requirements.txt
       - name: Test requirements
         run: |
-          python3 ./budget/manage.py test --failfast
+          python3 ./budget/manage.py test --failfast >django.test 2>&1
+      - name: Test notification
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_TO }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
+          message: "Django tests failed"
+          document: django.test
 
   build:
-    needs:
-      - test
+    # needs:
+    #   - test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -60,5 +68,13 @@ jobs:
           docker images --format "{{.Repository}}:{{.Tag}}" ghcr.io/${{ github.repository_owner }}/vasilisc.budget* | while read IMAGE; do
             IMAGE_ID=$(echo $IMAGE | awk -F ":" '{print $1}')
             docker tag $IMAGE $IMAGE_ID:$GITHUB_SHA
-            docker push $IMAGE_ID
+            # docker push $IMAGE_ID
+            echo -e "IMAGE: $IMAGE\tIMAGE_ID: $IMAGE_ID"
           done
+          docker images
+      - name: Test notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TG_TO }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
+          message: New contaner built!!!
