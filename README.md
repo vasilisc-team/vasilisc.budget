@@ -1,13 +1,11 @@
 
-# Vasilisc.budget
+# vasilisc.budget
 
-## For “Цифровой Прорыв” 2021 FinTech from Vasilisc. Task - budget10.
-
-Main stack:
+**Стек технологий [основной]**
 
 Python         |  Django   | Docker  | Pandas   | Sklearn   | TensorFlow | NymPy |
 :------------------------:|:------------------------:|:----------------------:|:----------------------:|:----------------------:|:----------------------:|:----------------------:|
-<img src=https://e.sfu-kras.ru/pluginfile.php/1794713/course/overviewfiles/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.jpg width="100" height="100" />|<img src=https://w7.pngwing.com/pngs/159/366/png-transparent-django-python-computer-icons-logo-python-text-label-rectangle.png width="100" height="100" />|<img src=https://e7.pngegg.com/pngimages/852/593/png-clipart-using-docker-developing-and-deploying-software-with-containers-application-software-software-deployment-computer-software-github-marine-mammal-logo.png width="100" height="100" />|<img src=https://chanzuckerberg.com/wp-content/uploads/2019/11/pandas.png width=100 height=100/>|<img src=https://www.oursky.com/assets/img/tech__scikit.png width=100 height=100/>|<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1200px-TensorFlowLogo.svg.png width="100" height="100" />|<img src=https://user-images.githubusercontent.com/82882128/132093816-429d9b14-941f-4c52-adfa-4bc9ac426a03.png width="100" height="100" />| 
+<img src=https://e.sfu-kras.ru/pluginfile.php/1794713/course/overviewfiles/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.jpg width="64" height="64" />|<img src=https://s3.amazonaws.com/cloud.ohloh.net/attachments/91518/django-logo-positive-scaled_med_med.png width="64" height="64" />|<img src=https://www.kubeclusters.com/img/index/docker-logo.png width="64" height="64" />|<img src=https://jehyunlee.github.io/thumbnails/Python-DS/1-pandas1.png width=64 height=64/>|<img src=https://pythondatalab.files.wordpress.com/2015/04/skl-logo.jpg width=64 height=64/>|<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1200px-TensorFlowLogo.svg.png width="64" height="64" />|<img src=https://user-images.githubusercontent.com/82882128/132093816-429d9b14-941f-4c52-adfa-4bc9ac426a03.png width="64" height="64" />| 
 
 
 [![github workflow CI img]][github workflow CI]
@@ -15,8 +13,19 @@ Python         |  Django   | Docker  | Pandas   | Sklearn   | TensorFlow | NymPy
 [github workflow CI img]: https://github.com/xausssr/vasilisc.budget/actions/workflows/build-ci.yaml/badge.svg
 [github workflow CI]: https://github.com/xausssr/vasilisc.budget/actions/workflows/build-ci.yaml
 
-### Директория Research содержит Jupyter Notebook с моделями
-#### Исследование представляет из себя:
+Сервис представляет собой веб-приложение, упрощающее работу аналитика и позволяющее планировать региональный бюджет на основе различных моделей анализа, в том числе, искусственных нейронных сетей. Аналитик может посмотреть дашборд с представлением наиболее влиятельных метрик, сводной статистики и прогнозом, автоматически созданным системой, а также загрузить данные о бюджете за предыдущие периоды для просмотра нового прогноза. 
+
+
+Уникальность: возможность загрузки данных напрямую в модель и их автоматический анализ, построение отдельных моделей планирования для наиболее значимых параметров, прогнозирвоание консолидирвоанного бюджета на основе ARIMA, исторических данных, предсказаний предыдущего шага, предсказание бюджета на основе ИНС, выдача сводной статистики.
+
+# Demo
+[https://vasilisc.ru:59443/](Сайт)
+
+# Аналитика
+
+Директория Research содержит Jupyter Notebook с моделями
+Исследование представляет из себя:
+
 - анализ вклада в бюджет различных статей (наименьший/наибольший вклад, топ прибыльных/убыточных статей)
 - анализ корелляции и корелляционную матрицу признаков
 - построение базовой модели для анализа и прогнозирвоания временных рядов ARIMA
@@ -26,5 +35,33 @@ Python         |  Django   | Docker  | Pandas   | Sklearn   | TensorFlow | NymPy
 - обучение искусственной нейронной сети и предсказание бюджета на основе ИНС
 - выдача сводной статистики
 
+Для запуска jupyter-тетрадки необходимы следующие зависимости `>= python.3.7`:
+- `pandas` : 1.1.3
+- `numpy` : 1.20.1
+- `statsmodels` : 0.12.2
+- `sklearn` : 0.23.0
+- `tensorflow` : 2.2.0
 
 
+# Среда запуска
+Необходим Docker.
+
+# Установка веб-сервера
+Данный репозиторий имеет настроеный ci/cd пайплайн, автоматически собирающий актуальный docker-контейнер. 
+
+Установка:
+
+`$ docker pull ghcr.io/xausssr/vasilisc.budget:latest`
+
+**Установка вне docker не рекомендуется!**
+
+# Команда
+Толстых Андрей &minus; analitics, ML [<img src=https://pbs.twimg.com/media/ErZeb4AXYAAuKFm.jpg width="15" height="15" />](https://t.me/tolstykhaa)
+
+Ельчугин Максим &minus; fullstack, CI/CD  [<img src=https://pbs.twimg.com/media/ErZeb4AXYAAuKFm.jpg width="15" height="15" />](https://t.me/pariah_max)
+
+Суворов Арнольд &minus; analitics, ML [<img src=https://pbs.twimg.com/media/ErZeb4AXYAAuKFm.jpg width="15" height="15" />](https://t.me/SSHINRATENSSEI)
+
+Маямсин Сергей &minus; backend [<img src=https://pbs.twimg.com/media/ErZeb4AXYAAuKFm.jpg width="15" height="15" />](https://t.me/Sinserelyyy)
+
+Гаус Глеб &minus; disign, UX/UI [<img src=https://pbs.twimg.com/media/ErZeb4AXYAAuKFm.jpg width="15" height="15" />](https://t.me/grey_landlord)
