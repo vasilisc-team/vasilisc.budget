@@ -1,11 +1,10 @@
 import json
 
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
-from django_plotly_dash.templatetags import plotly_dash
-import json
-import plotly.graph_objs as go
 import plotly
+import plotly.graph_objs as go
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.shortcuts import render
+from django_plotly_dash.templatetags import plotly_dash
 
 
 def home_view(request):
@@ -33,9 +32,6 @@ def research_view(request):
 
 
 def forecast_view(request):
-    with open("budget/fig.json") as read_file:
-        data = json.load(read_file)
-        data = json.loads(data)
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=[1, 2, 3], y=[1, 2, 3]))
     plot_div = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
