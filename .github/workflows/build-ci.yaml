@@ -9,14 +9,14 @@ on:
       - .gitignore
       - .gitattributes
       - .editorconfig
-      - research
+      - research/**
   pull_request:
     paths-ignore:
       - README.md
       - .gitignore
       - .gitattributes
       - .editorconfig
-      - research
+      - research/**
 
 jobs:
   test:
