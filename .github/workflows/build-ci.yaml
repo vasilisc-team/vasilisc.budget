@@ -43,8 +43,8 @@ jobs:
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TG_TO }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
           message: "Django tests failed"
           document: django.test
 
@@ -77,4 +77,4 @@ jobs:
         with:
           to: ${{ secrets.TG_TO }}
           token: ${{ secrets.TG_BOT_TOKEN }}
-          message: New contaner builded!!!
+          message: New contaner built!!!
