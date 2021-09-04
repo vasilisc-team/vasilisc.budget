@@ -21,7 +21,6 @@ import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('django_plotly_dash.urls')),
     path('main/', home_view),
     path('', home_view)
 ]
