@@ -84,4 +84,4 @@ jobs:
           message: |
             `Commit Message: ${{ github.event.head_commit.message }}`
             `Commited Actor: ${{ github.actor }}`
-            `New Imaget: ghcr.io/${{ github.repository_owner }}/vasilisc.budget:{{ commit.sha }}`
+            `New Image:      ghcr.io/${{ github.repository_owner }}/vasilisc.budget:{{ commit.sha }}`
