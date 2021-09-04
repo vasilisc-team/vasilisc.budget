@@ -8,7 +8,7 @@ from django_plotly_dash.templatetags import plotly_dash
 
 
 def home_view(request):
-    template = 'home/index.html'
+    template = 'home/home.html'
 
     return render(request, template)
 
