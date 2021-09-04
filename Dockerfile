@@ -20,4 +20,4 @@ RUN python3 -m pip install --upgrade pip \
 COPY budget ./budget
 
 EXPOSE 19999
-CMD ["python", "./budget/manage.py", "runsslserver", "0.0.0.0:19999", "--insecure", "--certificate", "/budget/certs/certificate.crt", "--key", "/budget/certs/certificate.key"]
+CMD ["python", "./budget/manage.py", "runsslserver", "0.0.0.0:19999", "--static", "--certificate", "/budget/certs/certificate.crt", "--key", "/budget/certs/certificate.key"]
