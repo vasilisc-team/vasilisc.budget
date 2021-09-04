@@ -7,7 +7,7 @@ def home_view(request):
     template = 'home/index.html'
     greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
 
-    with open("fig.json", "r") as read_file:
+    with open("budget/fig.json", "r") as read_file:
         data = json.load(read_file)
 
     context = {
