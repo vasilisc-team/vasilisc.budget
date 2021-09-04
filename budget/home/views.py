@@ -1,58 +1,36 @@
+import json
+
 from django.shortcuts import render
 from django_plotly_dash.templatetags import plotly_dash
-import json
 
 
 def home_view(request):
     template = 'home/index.html'
-    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
 
-    with open("budget/fig.json", "r") as read_file:
-        data = json.load(read_file)
-
-    context = {
-        'greeting': greeting
-    }
-
-    return render(request, template, context)
+    return render(request, template)
 
 
 def team_view(request):
     template = 'home/team.html'
-    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
-    context = {
-        'greeting': greeting
-    }
 
-    return render(request, template, context)
+    return render(request, template)
 
 
 def content_view(request):
     template = 'home/content.html'
-    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
-    context = {
-        'greeting': greeting
-    }
-    return render(request, template, context)
+
+    return render(request, template)
 
 
 def research_view(request):
     template = 'home/research.html'
-    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
-    context = {
-        'greeting': greeting
-    }
 
-    return render(request, template, context)
+    return render(request, template)
 
 
 def forecast_view(request):
     template = 'home/forecast.html'
-    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
-    context = {
-        'greeting': greeting
-    }
 
-    return render(request, template, context)
+    return render(request, template)
 
 
