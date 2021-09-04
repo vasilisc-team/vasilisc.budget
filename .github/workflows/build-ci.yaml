@@ -41,8 +41,8 @@ jobs:
           python3 ./budget/manage.py test --failfast
 
   build:
-    needs:
-      - test
+    # needs:
+    #   - test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
