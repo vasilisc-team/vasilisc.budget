@@ -39,13 +39,19 @@ jobs:
       - name: Test requirements
         run: |
           python3 ./budget/manage.py test --failfast >/tmp/django.test 2>&1
-      - name: Test notification
+      - name: Send Telegram notification
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TG_TO }}
           token: ${{ secrets.TG_BOT_TOKEN }}
-          message: "Django tests failed"
+          disable_web_page_preview: true
+          format: markdown
+          message: |
+            `Info: Django tests failed!!!`
+            `Commit Message: ${{ github.event.head_commit.message }}`
+            `Commited Actor: ${{ github.actor }}`
+            `Build Info:` https://github.com/${{ github.repository }}/commit/${{ github.sha }}/checks
           document: /tmp/django.test
 
   build:
@@ -68,9 +74,14 @@ jobs:
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/vasilisc.budget
           docker tag $IMAGE_ID:latest $IMAGE_ID:$GITHUB_SHA
           docker push --all-tags $IMAGE_ID
-      - name: Test notification
+      - name: Send Telegram notification
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TG_TO }}
           token: ${{ secrets.TG_BOT_TOKEN }}
-          message: New contaner built!!!
+          disable_web_page_preview: true
+          format: markdown
+          message: |
+            `Commit Message: ${{ github.event.head_commit.message }}`
+            `Commited Actor: ${{ github.actor }}`
+            `New Imaget: ghcr.io/${{ github.repository_owner }}/vasilisc.budget:{{ commit.sha }}`
