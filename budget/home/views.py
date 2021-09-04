@@ -33,7 +33,7 @@ def research_view(request):
 
 
 def forecast_view(request):
-    with open("fig.json") as read_file:
+    with open("budget/fig.json") as read_file:
         data = json.load(read_file)
         data = json.loads(data)
     fig = go.Figure()
