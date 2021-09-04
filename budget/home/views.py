@@ -46,3 +46,13 @@ def research_view(request):
     return render(request, template, context)
 
 
+def forecast_view(request):
+    template = 'home/forecast.html'
+    greeting = '🥥    КЛАСИВЫЙ ДИЗИГН ОТ ДИЗИГНЕРА КОКОСА   🥥'
+    context = {
+        'greeting': greeting
+    }
+
+    return render(request, template, context)
+
+

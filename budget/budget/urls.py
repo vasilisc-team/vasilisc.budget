@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from dash_app import example
-from home.views import home_view, team_view, content_view, research_view
+from home.views import home_view, team_view, content_view, research_view, forecast_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +25,5 @@ urlpatterns = [
     path('team', team_view),
     path('content', content_view),
     path('research', research_view),
+    path('forecast', forecast_view),
 ]
