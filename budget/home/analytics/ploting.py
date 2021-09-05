@@ -124,17 +124,9 @@ class Plotter:
     def forecast(data: BudgetDataAggregate, f_data: ForecastData):
         x_line = list(data.budgets_data)
         x_line_f = x_line + [str(int(x_line[-1]) + 1)]
-        y_line = data.cons_data["cons_all_profit"]
+        y_line = data.cons_data["cons_all_profit"].to_list()
 
         fig = go.Figure()
-        fig.add_trace(
-            go.Scatter(
-                x=x_line,  # линия x - у нас даты
-                y=y_line,  # y - значения
-                mode="lines",  # не трогай)
-                name="Отчет",  # имя ряда - попадет в легенду
-            )
-        )
         fig.add_trace(
             go.Scatter(
                 x=x_line_f,
@@ -159,24 +151,32 @@ class Plotter:
                 name="Нейронная сеть",
             )
         )
-        fig.update_layout(
-            shapes=[
-                dict(  # выделение региона с прогнозом
-                    type="rect",
-                    xref="x",
-                    yref="paper",
-                    x0=x_line[-1],  # левая граница
-                    y0="0",
-                    x1=x_line_f[-1],  # правая граница
-                    y1="1",
-                    fillcolor="LightSalmon",
-                    opacity=0.4,
-                    line_width=0,
-                    layer="below",
-                )
-            ],
-            title=go.layout.Title(text="Прогноз", font=go.layout.title.Font(size=30)),
+        fig.add_trace(
+            go.Scatter(
+                x=x_line,  # линия x - у нас даты
+                y=y_line,  # y - значения
+                mode="lines",  # не трогай)
+                name="Отчет",  # имя ряда - попадет в легенду
+            )
         )
+        # fig.update_layout(
+        #     shapes=[
+        #         dict(  # выделение региона с прогнозом
+        #             type="rect",
+        #             xref="x",
+        #             yref="paper",
+        #             x0=x_line[-1],  # левая граница
+        #             y0="0",
+        #             x1=x_line_f[-1],  # правая граница
+        #             y1="1",
+        #             fillcolor="LightSalmon",
+        #             opacity=0.4,
+        #             line_width=0,
+        #             layer="below",
+        #         )
+        #     ],
+        #     title=go.layout.Title(text="Прогноз", font=go.layout.title.Font(size=30)),
+        # )
         fig.update_yaxes(title_text="10 млдр. руб")
         fig.update_xaxes(title_text="Год")
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
