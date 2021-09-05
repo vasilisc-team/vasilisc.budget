@@ -54,7 +54,7 @@ class Plotter:
             row=1,
             col=1,
         )
-        fig.update_yaxes(title_text="10 млдр. руб")
+        fig.update_yaxes(title_text="руб.")
         fig.update_xaxes(title_text="Год")
 
         fig.add_trace(
@@ -78,7 +78,7 @@ class Plotter:
             col=1,
         )
 
-        fig.update_layout(title=go.layout.Title(text="Динамика бюджета", font=go.layout.title.Font(size=30)))
+        #fig.update_layout(title=go.layout.Title(text="Динамика бюджета", font=go.layout.title.Font(size=30)))
 
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -86,25 +86,27 @@ class Plotter:
     def get_VAT(data: BudgetDataAggregate) -> str:  # НДС
         x_line = list(data.budgets_data)
 
-        fig = make_subplots(rows=1, cols=1, subplot_titles=("Налог на прибыль"))
+        #fig = make_subplots(rows=1, cols=1, subplot_titles=("Налог на прибыль"))
+        fig = go.Figure()
 
         fig.add_trace(
             go.Bar(
                 x=x_line,  # линия x - у нас даты
                 y=data.cons_data["cons_income_tax"],  # y - значения
             ),
-            row=1,  # положение в строках
-            col=1,  # положение в столбцах
+            #row=1,  # положение в строках
+            #col=1,  # положение в столбцах
         )
-        fig.update_yaxes(title_text="10 млдр. руб")
+        fig.update_yaxes(title_text="руб.")
         fig.update_xaxes(title_text="Год")
 
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     @staticmethod
     def get_PIT(data: BudgetDataAggregate) -> str:  # НДФЛ
-        fig = make_subplots(rows=1, cols=1, subplot_titles=("НДФЛ"))
+        #fig = make_subplots(rows=1, cols=1 subplot_titles=("НДФЛ"))
 
+        fig = go.Figure()
         x_line = list(data.budgets_data)
 
         fig.add_trace(
@@ -112,10 +114,10 @@ class Plotter:
                 x=x_line,  # линия x - у нас даты
                 y=data.cons_data["cons_income_ndfl"],  # y - значения
             ),
-            row=1,  # положение в строках
-            col=1,  # положение в столбцах
+            #row=1,  # положение в строках
+            #col=1,  # положение в столбцах
         )
-        fig.update_yaxes(title_text="10 млдр. руб")
+        fig.update_yaxes(title_text="руб.")
         fig.update_xaxes(title_text="Год")
 
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -177,6 +179,6 @@ class Plotter:
         #     ],
         #     title=go.layout.Title(text="Прогноз", font=go.layout.title.Font(size=30)),
         # )
-        fig.update_yaxes(title_text="10 млдр. руб")
+        fig.update_yaxes(title_text="руб.")
         fig.update_xaxes(title_text="Год")
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
